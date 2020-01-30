@@ -5,9 +5,11 @@ This is a simple python script to attempt to collect Fedora 3 statistics and gen
 It has two distinct processes that can be run separately or together. These are:
 
 1. Collecting statistics
-    Running the script with the `-o` parameter will attempt to collect statistics from the object store path and storing them in the SQLlite3 database.
+   
+   Running the script with the `-o` parameter will attempt to collect statistics from the object store path and storing them in the SQLlite3 database.
 1. Generating reports
-    Running the script with the --print-yearly will generate the report from the statistics in the SQLlite3 database.
+   
+   Running the script with the `--print-yearly` will generate the report from the statistics in the SQLlite3 database.
 
 These steps can be run together, but as the statistic gathering will take time it is desirable to be able to run reports without parsing the filesystem each time.
 
@@ -33,23 +35,23 @@ optional arguments:
 
 1. Parse the Fedora 3 object store to the database.
     ```
-    ./processor.py -o /path/to/objectstore my\_data\_file
+    ./processor.py -o /path/to/objectstore my_data_file.db
     ```
     **Caveat**: I hope to have this work incrementally (ie. add only new entries), but currently it will just skip objects that already exist in the database entirely.
 
 2. Parse the Fedora 3 object store and clear the database first.
     ```
-    ./processor.py --obj-dir /path/to/objectstore --wipe-db my\_data\_file
+    ./processor.py --obj-dir /path/to/objectstore --wipe-db my_data_file.db
     ```
 
 3. Generate statistics from the database.
     ```
-    ./processor.py --print-yearly my\_data\_file
+    ./processor.py --print-yearly my_data_file.db
     ```
 
 4. Parse the file system and then print the report.
     ```
-    ./processor.py -o /path/to/objectstore --print-yearly my\_data\_file
+    ./processor.py -o /path/to/objectstore --print-yearly my_data_file.db
     ```
 
 ## License
